@@ -26,14 +26,15 @@ Alternatively, if you're using SSL:
 
 Usage example:
 
-        var sockjs_url = '/multiplex';
-        var sockjs = new SockJS(sockjs_url);
+```javascript
+    var sockjs_url = '/multiplex';
+    var sockjs = new SockJS(sockjs_url);
 
-        var multiplexer = new WebSocketMultiplex(sockjs);
-        var ann  = multiplexer.channel('ann');
-        var bob  = multiplexer.channel('bob');
-        var carl = multiplexer.channel('carl');
-
+    var multiplexer = new WebSocketMultiplex(sockjs);
+    var ann  = multiplexer.channel('ann');
+    var bob  = multiplexer.channel('bob');
+    var carl = multiplexer.channel('carl');
+```
 
 Usage from the node.js server
 -----------------------------
@@ -44,6 +45,7 @@ On the node.js server side, you can use npm to get the code:
 
 And a simplistic example:
 
+```javascript
     var multiplex_server = require('websocket-multiplex');
 
     // 1. Setup SockJS server
@@ -64,5 +66,8 @@ And a simplistic example:
     var server = http.createServer();
     sockjs_echo.installHandlers(server, {prefix:'/multiplex'});
     var app = express.createServer();
+```
 
-For a full-featured example see the `/examples` directory.
+For a full-featured example see the
+[/examples/sockjs](https://github.com/sockjs/websocket-multiplex/tree/master/examples/sockjs)
+directory.
