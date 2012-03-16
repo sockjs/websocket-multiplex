@@ -1,0 +1,15 @@
+{
+    "name"        : "websocket-multiplex",
+    "author"      : "Marek Majkowski",
+    "version"     : "0.1.0",
+    "description" : "WebSocket-multiplex is a thin library on top of SockJS that allows you to do multiplexing of many virtual WebSockets connection over a single physical one.",
+    "keywords"    : ["websockets", "websocket", "sockjs", "multiplex", "multiplexing"],
+    "homepage"    : "https://github.com/sockjs/websocket-multiplex",
+
+    "repository": {"type": "git",
+                   "url": "https://github.com/sockjs/websocket-multiplex.git"},
+    "dependencies": {
+        "sockjs"      : "*"
+    },
+    "main": "multiplex_server"
+}
