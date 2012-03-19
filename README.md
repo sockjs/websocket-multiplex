@@ -71,3 +71,27 @@ And a simplistic example:
 For a full-featured example see the
 [/examples/sockjs](https://github.com/sockjs/websocket-multiplex/tree/master/examples/sockjs)
 directory.
+
+
+Protocol
+--------
+
+The underlying protocol is quite simple. Each message consists of
+three comma separated parts: _type_, _topic_ and _payload_. There are
+three valid message types:
+
+ * `sub` - expresses a will to subscribe to a given _topic_.
+ * `msg` - a message with _payload_ is being sent on a _topic_.
+ * `uns` - a will to unsubscribe from a _topic_.
+
+Invalid messages like wrong unsubscriptions or publishes to a _topic_
+to which a client was not subscribed to are simply ignored.
+
+This protocol assumes that both parties are genrally willing to
+copperate and no party can express any kind of errors. All invalid
+messages should be ignored.
+
+It's important to notice that the namespace is shared between both
+parties and it is not a good idea to use the same topic names on the
+client and on the server side. Both parties may express a will to
+unsubscribe itself or other party from a topic.
