@@ -1,7 +1,7 @@
 var express             = require('express');
-var websocket_multiplex = require('websocket-multiplex');
+var sockjs              = require('sockjs');
 
-var sockjs = require('sockjs');
+var websocket_multiplex = require('websocket-multiplex');
 
 
 // 1. Setup SockJS server
