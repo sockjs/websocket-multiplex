@@ -86,8 +86,8 @@ three valid message types:
 
 The _topic identifies a channel registered on the server side.
 
-The _id is a internal and unique id generated on the client side when it 
-request to subscribe to a topic. The _id identifies a connection instance. 
+The _id_ is unique id generated on the client side when it 
+request to subscribe to a topic. The _id_ identifies a connection instance. 
 This makes it possible for a single client to open multiple connections to 
 a single server-side service.
 
