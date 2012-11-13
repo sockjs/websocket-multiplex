@@ -3,7 +3,6 @@
     "version"      : "0.0.0-unreleasable",
     "dependencies" : {
         "express"             : "2.5.8",
-        "sockjs"              : "0.3.x",
-        "websocket-multiplex" : "*"
+        "sockjs"              : "0.3.x"
     }
 }
