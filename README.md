@@ -84,12 +84,12 @@ three valid message types:
  * `msg` - a message with _payload_ is being sent on a _topic_.
  * `uns` - a will to unsubscribe from a _topic_.
 
-The _topic identifies a channel registered on the server side.
+The _topic_ identifies a channel registered on the server side.
 
-The _id_ is unique id generated on the client side when it 
-request to subscribe to a topic. The _id_ identifies a connection instance. 
-This makes it possible for a single client to open multiple connections to 
-a single server-side service.
+The _id_ a unique connection identifier generated on the client side. Each 
+request to subscribe to a topic from a given client has a unique id.
+This makes it possible for a single client to open multiple independent
+channel connection to a single server-side service.
 
 Invalid messages like wrong unsubscriptions or publishes to a _topic_
 to which a client was not subscribed to are simply ignored.
