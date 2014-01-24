@@ -44,7 +44,7 @@ var server = http.createServer(app);
 service.installHandlers(server, {prefix:'/multiplex'});
 
 console.log(' [*] Listening on 0.0.0.0:9999' );
-app.listen(9999, '0.0.0.0');
+server.listen(9999, '0.0.0.0');
 
 app.get('/', function (req, res) {
     res.sendfile(__dirname + '/index.html');
