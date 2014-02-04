@@ -1,0 +1,4 @@
+We got permission from the original author of websocket multiplex to
+use the MIT-license. See here:
+
+https://github.com/sockjs/websocket-multiplex/issues/3

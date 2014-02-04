@@ -1,7 +1,8 @@
 var express             = require('express');
 var sockjs              = require('sockjs');
+var path = require('path');
 
-var websocket_multiplex = require('websocket-multiplex');
+var websocket_multiplex = require('../../multiplex_server');
 
 
 // 1. Setup SockJS server
@@ -48,5 +49,5 @@ app.get('/', function (req, res) {
 });
 
 app.get('/multiplex.js', function (req, res) {
-    res.sendfile(__dirname + '/multiplex.js');
+    res.sendfile(path.resolve(__dirname , '../../multiplex_client.js'));
 });

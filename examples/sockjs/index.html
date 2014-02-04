@@ -2,7 +2,7 @@
 <html><head>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
-    <script src="http://cdn.sockjs.org/websocket-multiplex-0.1.js"></script>
+    <script src="multiplex.js"></script>
     <style>
       .box {
           width: 300px;
@@ -36,17 +36,32 @@
 </head><body lang="en">
     <h1>SockJS Multiplex example</h1>
 
-    <div id="first" class="box">
+    <div id="1" class="box">
       <div></div>
       <form><input autocomplete="off" value="Type here..."></input></form>
     </div>
 
-    <div id="second" class="box">
+    <div id="2" class="box">
       <div></div>
       <form><input autocomplete="off"></input></form>
     </div>
 
-    <div id="third" class="box">
+    <div id="3" class="box">
+      <div></div>
+      <form><input autocomplete="off"></input></form>
+    </div>
+    
+    <div id="4" class="box">
+      <div></div>
+      <form><input autocomplete="off" value="Type here..."></input></form>
+    </div>
+
+    <div id="5" class="box">
+      <div></div>
+      <form><input autocomplete="off"></input></form>
+    </div>
+
+    <div id="6" class="box">
       <div></div>
       <form><input autocomplete="off"></input></form>
     </div>
@@ -87,9 +102,17 @@
         var bob  = multiplexer.channel('bob');
         var carl = multiplexer.channel('carl');
 
-        pipe(ann,  '#first');
-        pipe(bob,  '#second');
-        pipe(carl, '#third');
+        pipe(ann,  '#1');
+        pipe(bob,  '#2');
+        pipe(carl, '#3');
+        
+        var ann2  = multiplexer.channel('ann');
+        var bob2  = multiplexer.channel('bob');
+        var carl2 = multiplexer.channel('carl');
+        
+        pipe(ann2,  '#4');
+        pipe(bob2,  '#5');
+        pipe(carl2, '#6');
 
         $('#first input').focus();
     </script>

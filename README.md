@@ -77,12 +77,19 @@ Protocol
 --------
 
 The underlying protocol is quite simple. Each message consists of
-three comma separated parts: _type_, _topic_ and _payload_. There are
+four comma separated parts: _type_, _topic_, _id and _payload_. There are
 three valid message types:
 
  * `sub` - expresses a will to subscribe to a given _topic_.
  * `msg` - a message with _payload_ is being sent on a _topic_.
  * `uns` - a will to unsubscribe from a _topic_.
+
+The _topic_ identifies a channel registered on the server side.
+
+The _id_ a unique connection identifier generated on the client side. Each 
+request to subscribe to a topic from a given client has a unique id.
+This makes it possible for a single client to open multiple independent
+channel connection to a single server-side service.
 
 Invalid messages like wrong unsubscriptions or publishes to a _topic_
 to which a client was not subscribed to are simply ignored.
