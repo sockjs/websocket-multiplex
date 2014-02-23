@@ -84,3 +84,13 @@ var WebSocketMultiplex = (function(){
 
     return WebSocketMultiplex;
 })();
+
+//support multiple js loaders (browser,amd,node)
+if (typeof define === "function" && define.amd) {
+  define(function () {
+    return WebSocketMultiplex;
+  });
+} else {
+  root = typeof exports !== "undefined" && exports !== null ? exports : this;
+  root.WebSocketMultiplex = WebSocketMultiplex;
+}
