@@ -1,6 +1,8 @@
 var events = require('events');
 var stream = require('stream');
 
+var util = require('util');
+
 
 exports.MultiplexServer = MultiplexServer = function(service) {
     var that = this;
@@ -57,7 +59,7 @@ var Channel = function(conn, topic, channels) {
     this.channels = channels;
     stream.Stream.call(this);
 };
-Channel.prototype = new stream.Stream();
+util.inherits(Channel, stream.Stream);
 
 Channel.prototype.write = function(data) {
     this.conn.write('msg,' + this.topic + ',' + data);
