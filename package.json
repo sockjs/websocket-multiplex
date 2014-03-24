@@ -1,5 +1,5 @@
 {
-    "name"        : "pixel8-websocket-multiplex",
+    "name"        : "websocket-multiplex",
     "author"      : "Marek Majkowski",
     "version"     : "0.1.0",
     "description" : "WebSocket-multiplex is a thin library on top of SockJS that allows you to do multiplexing of many virtual WebSockets connection over a single physical one.",
