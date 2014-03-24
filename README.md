@@ -1,3 +1,7 @@
+Fork Information
+===================
+This is a fork of the websocket multiplex library with changes.
+
 WebSocket-multiplex
 ===================
 
