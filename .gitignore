@@ -1,2 +1,6 @@
 examples/sockjs/node_modules
 
+
+.idea/
+
+node_modules/
