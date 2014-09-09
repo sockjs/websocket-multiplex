@@ -15,13 +15,11 @@ Usage from the browser
 
 On the client side (browser) load library like that:
 
-    <script src="http://cdn.sockjs.org/websocket-multiplex-0.1.js">
-      </script>
+    <script src="http://cdn.sockjs.org/websocket-multiplex-0.1.js"></script>
 
 Alternatively, if you're using SSL:
 
-    <script src="https://d1fxtkz8shb9d2.cloudfront.net/websocket-multiplex-0.1.js">
-      </script>
+    <script src="https://d1fxtkz8shb9d2.cloudfront.net/websocket-multiplex-0.1.js"></script>
 
 Usage example:
 
@@ -33,6 +31,18 @@ Usage example:
     var ann  = multiplexer.channel('ann');
     var bob  = multiplexer.channel('bob');
     var carl = multiplexer.channel('carl');
+```
+
+If the sub topic is activated on server configuration, you have the possibility to create one with dot separated syntax.
+
+```javascript
+    var sockjs_url = '/multiplex';
+    var sockjs = new SockJS(sockjs_url);
+
+    var multiplexer = new WebSocketMultiplex(sockjs);
+    var ann  = multiplexer.channel('ann.spell');
+    var bob  = multiplexer.channel('bob.age');
+    var carl = multiplexer.channel('carl.23');
 ```
 
 Usage from the node.js server
@@ -67,10 +77,20 @@ And a simplistic example:
     var app = express.createServer();
 ```
 
+To authorize sub topic, it is necessary to add the configuration of the option during creation of MultiplexServer.
+This configuration is deactivated by default.
+
+```javascript
+   
+    // Setup multiplexing with sub topic
+    var opts = {allowSubTopic: true};
+    var multiplexer = new multiplex_server.MultiplexServer(service, opts);
+
+```
+
 For a full-featured example see the
 [/examples/sockjs](https://github.com/sockjs/websocket-multiplex/tree/master/examples/sockjs)
 directory.
-
 
 Protocol
 --------
