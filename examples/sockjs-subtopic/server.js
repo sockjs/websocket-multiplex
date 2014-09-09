@@ -116,6 +116,10 @@ app.get('/js/angular-chartjs.min.js', function (req, res) {
     res.sendfile(__dirname + '/js/angular-chartjs.min.js');
 });
 
+app.get('/js/random.min.js', function (req, res) {
+    res.sendfile(__dirname + '/js/random.min.js');
+});
+
 setInterval(function () {
     var a = random.integer(1, 20);
     notifyA(a);

@@ -1,8 +1,9 @@
 var sockjs = new SockJS('/multiplex');
 var multiplexer = new WebSocketMultiplex(sockjs);
 
-var aChannel = multiplexer.channel('a.12');
-var bChannel = multiplexer.channel('b.5');
+var random = new Random();
+var aChannel = multiplexer.channel('a.' + random.integer(1, 20));
+var bChannel = multiplexer.channel('b.' + random.integer(1, 20));
 
 var app = angular.module('subTopicSample', ['chartjs']);
 
