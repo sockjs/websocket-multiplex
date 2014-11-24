@@ -32,10 +32,10 @@ exports.MultiplexServer = MultiplexServer = function(service, opts) {
                 switch(type) {
                     case 'uns':
                         delete channels[topic];
-                        sub.emit('close');
+                        that.registered_channels[baseTopic].emit('close', sub);
                         break;
                     case 'msg':
-                        sub.emit('data', payload);
+                        that.registered_channels[baseTopic].emit('data', payload);
                         break;
                 }
             } else {
