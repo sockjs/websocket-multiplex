@@ -84,3 +84,7 @@ var WebSocketMultiplex = (function(){
 
     return WebSocketMultiplex;
 })();
+
+if (typeof exports === 'object' && typeof module === 'object') {
+	module.exports = WebSocketMultiplex;
+}

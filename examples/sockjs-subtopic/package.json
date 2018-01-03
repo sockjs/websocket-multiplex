@@ -1,0 +1,11 @@
+{
+    "name"         : "websocket-multiplex-sockjs-subtopic-example",
+    "version"      : "0.0.0-unreleasable",
+    "dependencies" : {
+        "express"             : "3.0.0",
+        "log4js"              : "0.6.20",
+        "sockjs"              : "0.3.x",
+        "random-js"           : "1.0.4",
+        "websocket-multiplex" : "git://github.com/gdepuille/websocket-multiplex.git#feature/subTopic"
+    }
+}

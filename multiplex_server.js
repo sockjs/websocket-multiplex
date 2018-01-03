@@ -1,10 +1,14 @@
 var events = require('events');
 var stream = require('stream');
 
+var defaultOptions = {
+    allowSubTopic: false
+}
 
-exports.MultiplexServer = MultiplexServer = function(service) {
+exports.MultiplexServer = MultiplexServer = function(service, opts) {
     var that = this;
     this.registered_channels = {};
+    this.options = (opts != undefined) ? opts : defaultOptions;
     this.service = service;
     this.service.on('connection', function(conn) {
         var channels = {};
@@ -12,28 +16,35 @@ exports.MultiplexServer = MultiplexServer = function(service) {
         conn.on('data', function(message) {
             var t = message.split(',');
             var type = t.shift(), topic = t.shift(),  payload = t.join();
-            if (!(topic in that.registered_channels)) {
+
+            // Retrieve the base topic name.
+            var baseTopic = topic;
+            if (that.options.allowSubTopic === true && topic.indexOf('.') != -1) {
+                baseTopic = topic.split('.')[0];
+            }
+
+            if (!(baseTopic in that.registered_channels)) {
                 return;
             }
             if (topic in channels) {
                 var sub = channels[topic];
 
                 switch(type) {
-                case 'uns':
-                    delete channels[topic];
-                    sub.emit('close');
-                    break;
-                case 'msg':
-                    sub.emit('data', payload);
-                    break;
+                    case 'uns':
+                        delete channels[topic];
+                        that.registered_channels[baseTopic].emit('close', sub);
+                        break;
+                    case 'msg':
+                        that.registered_channels[baseTopic].emit('data', payload);
+                        break;
                 }
             } else {
                 switch(type) {
-                case 'sub':
-                    var sub = channels[topic] = new Channel(conn, topic,
-                                                            channels);
-                    that.registered_channels[topic].emit('connection', sub)
-                    break;
+                    case 'sub':
+                        var sub = channels[topic] = new Channel(conn, topic,
+                            channels);
+                        that.registered_channels[baseTopic].emit('connection', sub)
+                        break;
                 }
             }
         });
