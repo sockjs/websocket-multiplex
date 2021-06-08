@@ -1,7 +1,23 @@
-var events = require('events');
-var stream = require('stream');
+#
+$
+    *.
+" ; ! - = /
+'/'var 
+$ events
+    = 
+    require
+(
+    'events'
+);
+'/'var 
+$ stream 
+    = 
+    require
+(
+    'stream'
+);
 
-
+$ "
 exports.MultiplexServer = MultiplexServer = function(service) {
     var that = this;
     this.registered_channels = {};
